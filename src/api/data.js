@@ -12,44 +12,44 @@ export const logout = api.logout;
 //get all Recipes
 export async function getRecipes(page) {
 
-    return await api.get(host + `/data/myRecipes?offset=${(page - 1) * 3}&pageSize=3`);
+    return await api.get(host + `/data/recipes?offset=${(page - 1) * 3}&pageSize=3`);
 }
 
 //get my Recipes 
 export async function getMyRecipes(userId) {
-    return await api.get(host + `/data/myRecipes?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`);
+    return await api.get(host + `/data/recipes?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`);
 }
 
 //surch
 export async function search(query) {
     if (query) {
-        return await api.get(host + `/data/myRecipes?where=` + encodeURIComponent(`name LIKE "${query}"`));
+        return await api.get(host + `/data/recipes?where=` + encodeURIComponent(`name LIKE "${query}"`));
     } 
 }
 
 //get collectionCount
 export async function collectionCount() {
-    return await api.get(host + '/data/myRecipes?count');
+    return await api.get(host + '/data/recipes?count');
 }
 
 //get Recipes by id - Details
 export async function getRecipeById(id) {
-    return await api.get(host + '/data/myRecipes/' + id);
+    return await api.get(host + '/data/recipes/' + id);
 }
 
 //create Recipe
 export async function createRecipe(recipe) {
-    return await api.post(host + '/data/myRecipes', recipe);
+    return await api.post(host + '/data/recipes', recipe);
 }
 
 //edit Recipe by id
 export async function updateRecipe(id, recipe) {
-    return await api.put(host + '/data/myRecipes/' + id, recipe);
+    return await api.put(host + '/data/recipes/' + id, recipe);
 }
 
 //delete Recipe by id
 export async function deleteRecipe(recipeId) {
-    return await api.del(host + '/data/myRecipes/' + recipeId);
+    return await api.del(host + '/data/recipes/' + recipeId);
 }
 
 
